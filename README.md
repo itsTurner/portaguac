@@ -1,5 +1,5 @@
 # Portaguac dynamicizes recipes
-Cooking probably doesn't actually need a programming language, so why does this exist? Well, it can become:
+Cooking probably doesn't actually need a markup language, so why does this exist? Well, it can become:
 
 - [ ] Structure from natural instructions
 - [ ] Clear object references (e.g. `@tomato` = 🍅)
