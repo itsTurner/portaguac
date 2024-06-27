@@ -1,0 +1,16 @@
+!name Classic guacamole
+!author Tavin Turner
+!date 06/19/2024
+
+> fmt '%quantity %adj %ingredient'
+> remainder 'remaining %ingredient'
+
+-[prep] To prepare:
+    - Medium dice [@avocado#2ct(medium, ripe):avo->fmt @tomato#1ct(roma):tomato->fmt]
+    - Small dice @shallot#1/2ct:shallot->fmt
+    ~ Slice @serrano#1-2ct|@jalapeno|@habanero#1ct:pepper->fmt
+    - Juice @lime#1ct(medium, soft):lime_juice->fmt
+-[mash] Mash :avo/[@salt#pinch :lime_juice#splash] => :mash_avo
+-[mixin] Add [:tomato :shallot :pepper :lime#rest->remainder] => :plain_guac
+-[season] Season :plain_guac/[@salt @pepper @cumin @coriander]
+= Serve with chips, rice, or anything you like!

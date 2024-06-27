@@ -1,0 +1,44 @@
+fn headmatter_stringify(headmatter: Headmatter) -> String {
+  headmatter.key <> " -> " <> headmatter.value
+}
+
+fn format_stringify(format: Format) -> String {
+  format.name <> " -> " <> format.template
+}
+
+fn ingredient_stringify(ingredient: Ingredient) -> String {
+  "@"
+  <> ingredient.name
+  <> "#"
+  <> ingredient.amount
+  <> "("
+  <> string.join(ingredient.adjectives, with: ", ")
+  <> ")"
+}
+
+fn instruction_stringify(instruction: Instruction) -> String {
+  instruction.action
+  <> "["
+  <> string.join(
+    list.map(instruction.ingredients, ingredient_stringify),
+    with: ",\n",
+  )
+  <> "]"
+}
+
+fn step_stringify(step: Step) -> String {
+  option.unwrap(step.name, "")
+  <> "\ninstructions: \n"
+  <> string.join(list.map(step.instructions, instruction_stringify), with: "\n")
+  <> "\nsteps: \n"
+  <> string.join(list.map(step.steps, step_stringify), with: "\n")
+}
+
+fn lexed_recipe_to_string(recipe: LexedRecipe) -> String {
+  "headmatter\n---\n"
+  <> string.join(list.map(recipe.headmatter, headmatter_stringify), with: "\n")
+  <> "\n\nformats\n---\n"
+  <> string.join(list.map(recipe.formats, format_stringify), with: "\n")
+  <> "\n\nsteps\n---\n"
+  <> string.join(list.map(recipe.steps, step_stringify), with: "\n")
+}
